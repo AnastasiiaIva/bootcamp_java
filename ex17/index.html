@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, init
+ial-scale=1.0">
+<title>Ejercicio 17</title>
+<style>
+    .grid-container{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+        padding: 20px;
+        background-color: rgb(158, 158, 225);
+    }
+    .grid-container > div {
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+    }
+    .grid-item{
+        grid-column: span 2;/* Одна клітина розтягнута на два стовпці */
+    }
+</style>
+</head>
+<body>
+<div class="grid-container">
+<div class="grid-item">Elemento que ocupa dos colum
+nas</div>
+<div>Item 2</div>
+<div>Item 3</div>
+<div>Item 4</div>
+<div>Item 5</div>
+<div>Item 6</div>
+</div>
+</body>
+</html>
