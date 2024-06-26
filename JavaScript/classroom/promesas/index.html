@@ -29,7 +29,7 @@
     promis.then((message) 
 ) */
 
-    function operacionAsincrona1(a) {
+    /*     function operacionAsincrona1(a) {
       return a;
     }
     function operacionAsincrona2(b) {
@@ -39,12 +39,37 @@
       return c;
     }
 
-    let a = 1;
-
     let promis = new promis((resolve, reject) => {
       setTimeout(() => {
         resolve(operacionAsincrona1(a));
       }, 2000);
+    }); */
+
+    /*     function operacionAsincrona1(a) {
+        return new Promise((recolve, reject)=>
+        
+    )
+    } */
+
+    /*     let promis1 = new Promise(operacionAsincrona1(resolve, reject){
+        setTimeout(operacionAsincrona1(){
+            resolve("1");
+        }, 2000);
+    });
+
+    promis1.then(operacionAsincrona1(value)) {
+        console.log(value)
+    }
+ */
+
+    const myPromise = new Promise(function (myResolve, myReject) {
+      setTimeout(function () {
+        myResolve("I love You !!");
+      }, 1000);
+    });
+
+    myPromise.then(function (value) {
+      document.getElementById("demo").innerHTML = value;
     });
   </script>
 </html>
