@@ -1,130 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      const apiUrl = "https://pokeapi.co/api/v2/pokemon";
+
+      const xhr = new XMLHttpRequest();
+
+      xhr.open("GET", apiUrl, true);
+
+      // xhr.open("GET")
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      .circle1,
+      .circle2 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        position: fixed;
+        border-radius: 50%;
+        bottom: -100px;
+        z-index: -1;
+      }
+
+      .circle1 {
+        left: -100px;
+      }
+
+      .circle2 {
+        right: -100px;
+      }
+
+      .squer1,
+      .squer2 {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        position: fixed;
+        top: -180px;
+        z-index: -1;
+      }
+
+      .squer1 {
+        left: -100px;
+        transform: rotate(45deg);
+      }
+
+      .squer2 {
+        right: -100px;
+        transform: rotate(-45deg);
+      }
+
+      input {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        width: 400px;
+        height: 30px;
+      }
+
       body {
         background-color: rgb(255 230 44);
       }
-      body {
-        justify-content: center;
-      }
 
-      /*       .flex-conteiner {
+      .flex-conteiner {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
-      } */
+        width: auto;
 
-      /*         background-color: rgb(255 230 44);
-        width: 100%;
-        margin: 10%;
-        text-align: left; */
+        /* gap: 50px; */
+        /* box-sizing: border-box;  */
+      }
 
       .card {
         display: flex;
         flex-direction: column;
         background-color: rgb(223 223 223);
-        width: 25%;
+        width: 210px;
+        /* height: 180px; */
+        /* border: 1px solid black; */
         margin: 8px;
       }
+
       .card-img {
         position: relative;
-        height: 50%;
+        height: 100%;
         text-align: center;
       }
 
       .card-img img {
         width: 30%;
-        height: 50%;
+        height: 38%;
         padding: 20%;
       }
 
       .card-id {
         position: relative;
-        text-align: left;
-        width: 20%;
+        text-align: center;
+        vertical-align: 50px;
+        width: 40px;
+        height: 15px;
         background-color: rgb(208 204 201);
         color: rgb(158 139 123);
-        padding-left: 5px;
+        /* padding-left: 5px; */
+        font: 11px Ubuntu, Arial;
       }
+
       .card-bottom {
         background-color: rgb(255 255 255);
-      }
-      .card-name {
         padding: 5%;
+        height: 130px;
+      }
+
+      .card-name {
+        margin-top: 5px;
+        font: 18px Ubuntu, Arial;
       }
 
       .card-tipe {
         color: rgb(213 204 199);
-        margin-left: 5%;
         border: 1px solid rgb(213 204 199);
-        width: 20%;
+        display: inline-block;
         border-radius: 5px;
+        padding: 1%;
+        font: 10px Ubuntu, Arial;
+        display: inline-block;
+        margin-left: 1px;
       }
+
       .card-evolution {
         margin-left: 5%;
-        border-left: 4px solid rgb(118 81 61);
+        border-left: 3px solid rgb(118 81 61);
       }
 
       p {
         margin-left: 5px;
       }
+
+      .card-evolution-top {
+        font: 14px, Arial;
+        color: #5c3613;
+      }
+
+      .card-evolution-bottom {
+        font: 25px Ubuntu, Arial;
+        color: #5c3613;
+        margin-top: -15px;
+      }
     </style>
   </head>
+
   <body>
+    <div class="squer1"></div>
+    <div class="squer2"></div>
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+    <input type="text" placeholder="Filtra pokemons por nombre" />
+
     <div class="flex-conteiner">
       <div class="card">
-        <div class="card-img">
-          <img
-            src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
-            alt=""
-          />
-          <div class="card-id">ID/1</div>
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
         </div>
         <div class="card-bottom">
           <div class="card-name"><strong>Nombre</strong></div>
           <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
           <div class="card-evolution">
-            <p>Evolucion de:</p>
-            <p>Informacion</p>
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
           </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-img">
-          <img
-            src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
-            alt=""
-          />
-          <div class="card-id">ID/1</div>
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
         </div>
         <div class="card-bottom">
           <div class="card-name"><strong>Nombre</strong></div>
           <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
           <div class="card-evolution">
-            <p>Evolucion de:</p>
-            <p>Informacion</p>
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
           </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-img">
-          <img
-            src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
-            alt=""
-          />
-          <div class="card-id">ID/1</div>
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
         </div>
         <div class="card-bottom">
           <div class="card-name"><strong>Nombre</strong></div>
           <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
           <div class="card-evolution">
-            <p>Evolucion de:</p>
-            <p>Informacion</p>
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img">
+            <img
+              src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+              alt=""
+            />
+            <div class="card-id">ID / 1</div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-name"><strong>Nombre</strong></div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-tipe">Tipos</div>
+          <div class="card-evolution">
+            <p class="card-evolution-top">Evoluciona de:</p>
+            <p class="card-evolution-bottom">informacion</p>
           </div>
         </div>
       </div>
