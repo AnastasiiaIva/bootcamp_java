@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="" method="get" id="formulario">
+    <label for="password">Password:</label>
+        <input type="text" id="password" name="password" placeholder="Your password" required>
+        <br><br>
+        <label for="confirm">Confirm:</label>
+        <input type="text" id="confirm" name="confirm" placeholder="confirm" required>
+        <br><br>
+        <input type="submit" value="Confirmation">
+        <p id="message"></p>
+    </form>
+    
+</body>
+<script>
+/*     let form = document.getElementById("formulario").addEventListener("submit",
+        function (event) {
+            
+            let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
+            let message = document.getElementById("message").value;
+
+            if (password !==confirm){
+                message.textContent = "error";
+            }
+            else {
+                massege.textContent = "success";
+            }
+            document.getElementById("formulario").submit()
+
+        }
+
+    ) */
+
+    let form = document.getElementById("formulario")
+    form.addEventListener("submit", escuhar)
+
+
+        function escuhar(elEvento) {
+            let currentForm = this;
+            elEvento.preventDefault();
+
+
+            let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
+            let message = document.getElementById("message");
+
+
+
+                if (password !==confirm){
+                message.textContent = "error";
+                message.className = "error"
+            
+
+
+
+            else {
+                massage.textContent = "success";
+                message.className = "success"
+            }
+            
+
+
+        }
+    
+
+
+
+
+    </script>
+</body>
+</html>
+</script>
+</html>
+
+
