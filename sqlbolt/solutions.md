@@ -377,7 +377,445 @@ GROUP BY Director;
 ### Exercise 13 — Tasks
 
 1. Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+
+```sql
+INSERT INTO Movies (Title)
+VALUES ('Toy Story 5')
+```
+
 2. Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table.
+
+```sql
+INSERT INTO Boxoffice
+VALUES (4, 8.7, 340000000, 270000000 )
+```
+
+## 14: Updating rows
+
+### Exercise 14 — Tasks
+
+1. The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
+
+```sql
+UPDATE Movies
+SET Director = 'John Lasseter'
+WHERE Title = "A Bug's Life";
+```
+
+2. The year that Toy Story 2 was released is incorrect, it was actually released in 1999
+
+```sql
+UPDATE Movies
+SET Year = 1999
+WHERE Title = 'Toy Story 2';
+```
+
+3. Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
+
+```sql
+UPDATE Movies
+SET Title = "Toy Story 3" , Director = 'Lee Unkrich'
+WHERE Title = 'Toy Story 8';
+```
+
+## 15: Deleting rows
+
+### Exercise 15 — Tasks
+
+1. This database is getting too big, lets remove all movies that were released before 2005.
+
+```sql
+DELETE FROM Movies
+WHERE YEAR < 2005;
+```
+
+2. Andrew Stanton has also left the studio, so please remove all movies directed by him.
+
+```sql
+DELETE FROM Movies
+WHERE Director = 'Andrew Stanton';
+```
+
+## Lesson 16: Creating tables
+
+### Exercise 16 — Tasks
+
+1. Create a new table named Database with the following columns:
+   – Name A string (text) describing the name of the database
+   – Version A number (floating point) of the latest version of this database
+   – Download_count An integer count of the number of times this database was downloaded
+   This table has no constraints.
+
+```sql
+CREATE TABLE Database (
+    Name TEXT,
+    Version FLOAT,
+    Download_count INT(255));
+```
+
+## 17: Altering tables
+
+### Exercise 17 — Tasks
+
+1. Add a column named Aspect_ratio with a FLOAT data type to store the aspect-ratio each movie was released in.
+
+```sql
+ALTER TABLE Movies
+ADD Aspect_ratio FLOAT;
+```
+
+2. Add another column named Language with a TEXT data type to store the language that the movie was released in. Ensure that the default for this language is English.
+
+```sql
+ALTER TABLE Movies
+ADD Language TEXT
+    DEFAULT English;
+
+```
+
+## 18: Dropping tables
+
+### Exercise 18 — Tasks
+
+1. We've sadly reached the end of our lessons, lets clean up by removing the Movies table
+
+```sql
+DROP TABLE Movies;
+```
+
+2. And drop the BoxOffice table as well
+
+```sql
+DROP TABLE BoxOffice;
+```
+
+Solucion a los ejercicios de https://www.sql-practice.com/
+
+## EASY
+
+1. Show first name, last name, and gender of patients whose gender is 'M'
+
+```sql
+SELECT 	first_name, last_name, 	gender
+FROM patients
+WHERE gender = 'M'
+```
+
+2. Show first name and last name of patients who does not have allergies. (null)
+
+```sql
+SELECT 	first_name, last_name
+FROM patients
+WHERE allergies IS NULL
+```
+
+3. Show first name of patients that start with the letter 'C'
+
+```sql
+SELECT 	first_name
+FROM patients
+WHERE first_name LIKE 'C%'
+```
+
+4. Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)
+
+```sql
+SELECT 	first_name, 	last_name
+FROM patients
+WHERE 	weight BETWEEN 100 AND 120;
+```
+
+5. Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'
+
+```sql
+UPDATE patients
+SET  allergies = 'NKA'
+WHERE allergies IS NULL;
+```
+
+6. Show first name and last name concatinated into one column to show their full name.
+
+```sql
+SELECT concat(first_name , ' ' ,last_name) AS full_name
+FROM patients;
+```
+
+7. Show first name, last name, and the full province name of each patient.
+
+Example: 'Ontario' instead of 'ON'
+
+```sql
+SELECT first_name, 	last_name, 	province_name
+FROM patients
+inner join province_names
+on 	patients.province_id = province_names.province_id;
+```
+
+8. Show how many patients have a birth_date with 2010 as the birth year.
+
+```sql
+SELECT count(first_name)
+FROM patients
+where birth_date like '2010%';
+```
+
+9. Show the first_name, last_name, and height of the patient with the greatest height.
+
+```sql
+Show the first_name, last_name, and height of the patient with the greatest height.
+```
+
+10. Show the first_name, last_name, and height of the patient with the greatest height.
+
+```sql
+SELECT first_name, last_name, height
+FROM patients
+order by height desc
+limit 1;
+```
+
+11. Show all columns for patients who have one of the following patient_ids: 1,45,534,879,1000
+
+```sql
+SELECT *
+FROM patients
+where patient_id in (1,45,534,879,1000);
+```
+
+12. Show the total number of admissions
+
+```sql
+SELECT count(admission_date)
+FROM admissions
+
+```
+
+13. Show all the columns from admissions where the patient was admitted and discharged on the same day.
+
+```sql
+SELECT *
+FROM admissions
+where 	admission_date=	discharge_date;
+
+```
+
+14. Show the patient id and the total number of admissions for patient_id 579.
+
+```sql
+SELECT patient_id, count(admission_date)
+FROM admissions
+where 	patient_id=579;
+
+```
+
+15. Based on the cities that our patients live in, show unique cities that are in province_id 'NS'
+
+```sql
+SELECT distinct (city)
+FROM patients
+where province_id='NS'
+
+
+
+```
+
+16. Write a query to find the first_name, last name, and birth date of patients who has height greater than 160 and weight greater than 70
+
+```sql
+SELECT 	first_name, 	last_name, 	birth_date
+FROM patients
+where 	height>160 and 	weight>70;
+
+```
+
+17. Write a query to find list of patients first_name, last_name, and allergies where allergies are not null and are from the city of 'Hamilton'
+
+```sql
+SELECT 	first_name, 	last_name,	allergies
+FROM patients
+where allergies is not null
+	and city = 'Hamilton';
+```
+
+## Medium
+
+1. Show unique birth years from patients and order them by ascending.
+
+```sql
+SELECT distinct year (birth_date)
+FROM patients
+order by birth_date;
+```
+
+2. Show unique first names from the patients table which only occurs once in the list. For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.
+
+```sql
+SELECT distinct first_name
+FROM patients
+group by first_name
+having count (first_name)=1
+```
+
+3. Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+
+```sql
+SELECT 	patient_id, first_name
+FROM patients
+where first_name like 'S____%s';
+```
+
+4. Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'. Primary diagnosis is stored in the admissions table.
+
+```sql
+SELECT 	patients.patient_id, first_name, last_name
+FROM patients
+inNER join admissions
+ON patients.patient_id = admissions.patient_id
+where diagnosis = 'Dementia';
+```
+
+5. Display every patient's first_name. Order the list by the length of each name and then by alphabetically
+
+```sql
+SELECT 	first_name
+FROM patients
+order by LEN(first_name)
+	,first_name
+```
+
+6. Show the total amount of male patients and the total amount of female patients in the patients table. Display the two results in the same row.
+
+```sql
+
+```
+
+7. Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
+
+```sql
+
+```
+
+8. Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+
+```sql
+
+```
+
+9. Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.
+
+```sql
+
+```
+
+10. Show first name, last name and role of every person that is either patient or doctor. The roles are either "Patient" or "Doctor"
+
+```sql
+
+```
+
+11. Show all allergies ordered by popularity. Remove 'NKA' and NULL values from query.
+
+```sql
+
+```
+
+12. Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
+
+```sql
+
+```
+
+13. We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order EX: SMITH,jane
+
+```sql
+
+```
+
+14. Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+
+```sql
+
+```
+
+15. Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
+
+```sql
+
+```
+
+16. Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
+
+```sql
+
+```
+
+17. Show the all columns for patient_id 542's most recent admission_date.
+
+```sql
+
+```
+
+18. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria: 1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19. 2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+
+```sql
+
+```
+
+19. Show first_name, last_name, and the total number of admissions attended for each doctor. Every admission has been attended by a doctor.
+
+```sql
+
+```
+
+20. For each doctor, display their id, full name, and the first and last admission date they attended.
+
+```sql
+
+```
+
+21. Display the total amount of patients for each province. Order by descending.
+
+```sql
+
+```
+
+22. For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.
+
+```sql
+
+```
+
+23. Display the first name, last name and number of duplicate patients based on their first name and last name.
+
+```sql
+
+```
+
+24. Display patient's full name, height in the unit feet rounded to 1 decimal, weight in the unit pounds rounded to 0 decimals, birth_date, gender non abbreviated. Convert CM to feet by dividing by 30.48. Convert KG to pounds by multiplying by 2.205.
+
+```sql
+
+```
+
+25. Show patient_id, first_name, last_name from patients whose does not have any records in the admissions table. (Their patient_id does not exist in any admissions.patient_id rows.)
+
+```sql
+
+```
+
+-- Hard
+
+1. Show all of the patients grouped into weight groups. Show the total amount of patients in each weight group. Order the list by the weight group decending. For example, if they weight 100 to 109 they are placed in the 100 weight group, 110-119 = 110 weight group, etc.
+2. Show patient_id, weight, height, isObese from the patients table. Display isObese as a boolean 0 or 1. Obese is defined as weight(kg)/(height(m)2) >= 30. weight is in units kg. height is in units cm.
+3. Show patient_id, first_name, last_name, and attending doctor's specialty. Show only the patients who has a diagnosis as 'Dementia' and the doctor's first name is 'Lisa'. Check patients, admissions, and doctors tables for required information.
+4. All patients who have gone through admissions, can see their medical documents on our site. Those patients are given a temporary password after their first admission. Show the patient_id and temp_password. The password must be the following, in order: 1. patient_id 2. the numerical length of patient's last_name 3. year of patient's birth_date
+5. Each admission costs $50 for patients without insurance, and $10 for patients with insurance. All patients with an even patient_id have insurance. Give each patient a 'Yes' if they have insurance, and a 'No' if they don't have insurance. Add up the admission_total cost for each has_insurance group.
+6. Show the provinces that has more patients identified as 'M' than 'F'. Must only show full province_name
+7. We are looking for a specific patient. Pull all columns for the patient who matches the following criteria: - First_name contains an 'r' after the first two letters. - Identifies their gender as 'F' - Born in February, May, or December - Their weight would be between 60kg and 80kg - Their patient_id is an odd number - They are from the city 'Kingston'
+8. Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
+9. For each day display the total amount of admissions on that day. Display the amount changed from the previous date.
+10. Sort the province names in ascending order in such a way that the province 'Ontario' is always on top.
+11. We need a breakdown for the total amount of admissions each doctor has started each year. Show the doctor_id, doctor_full_name, specialty, year, total_admissions for that year.
 
 ```sql
 
