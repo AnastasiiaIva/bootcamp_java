@@ -39,5 +39,3 @@ Requisitos:
 5. Define las relaciones entre las entidades.
 6. Crea un diagrama ERD que represente el diseño de la base de datos.
    ![diagramas E-R2](./Diagram.drawio2.png)
-
-[def]: ./Diagram.drawio1.png
