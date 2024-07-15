@@ -1,4 +1,4 @@
-package JAVA.sheet02.ex02;
+package JAVA.sheet02.ex03;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package JAVA.sheet02.ex02;
+package JAVA.sheet02.ex03;
 
 public class Persona {
     private String name;
@@ -6,6 +6,10 @@ public class Persona {
 public Persona (String name, int age) {
     this.name = name;
     this.age = age;
+}
+
+public Persona (){
+
 }
 
 public void mostrarDetalles () {
@@ -28,10 +32,19 @@ public String getName () {
 public int getAge() {
     return age;
 }
+}
 
+class Estudiante extends Persona {
+String grado;
+super.mostrarDetalles();
 
+public Estudiante(){
 
+}
 
-
+public void mostrarDetallesEstudiantes () {
+    System.out.println("Nombre: " + name);
+    System.out.println("Edad: " + age);
+}
 
 }
