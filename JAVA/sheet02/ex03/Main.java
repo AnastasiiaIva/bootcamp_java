@@ -9,5 +9,7 @@ public class Main {
         myObj2.setName("Carlos");
         myObj2.setAge(30);
         myObj2.mostrarDetalles ();
+        Estudiante myObjEstudiante = new Estudiante("Ana", 20, "Ingenieria");
+        myObjEstudiante.mostrarDetalles ();
     }
 }

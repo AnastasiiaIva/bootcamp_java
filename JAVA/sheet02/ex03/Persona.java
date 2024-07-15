@@ -34,17 +34,3 @@ public int getAge() {
 }
 }
 
-class Estudiante extends Persona {
-String grado;
-super.mostrarDetalles();
-
-public Estudiante(){
-
-}
-
-public void mostrarDetallesEstudiantes () {
-    System.out.println("Nombre: " + name);
-    System.out.println("Edad: " + age);
-}
-
-}
