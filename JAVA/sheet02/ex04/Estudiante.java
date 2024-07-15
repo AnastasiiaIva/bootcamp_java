@@ -1,4 +1,4 @@
-package JAVA.sheet02.ex03;
+package JAVA.sheet02.ex04;
 
 public class Estudiante extends Persona {
     String grado;
@@ -15,4 +15,3 @@ public class Estudiante extends Persona {
     
     }
     
-
