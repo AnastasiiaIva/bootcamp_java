@@ -1,6 +1,6 @@
 package JAVA.sheet02.ex05;
 
-public class Persona {
+public class Persona implements Imprimible {
     private String name;
     private int age;
 public Persona (String name, int age) {
@@ -10,6 +10,11 @@ public Persona (String name, int age) {
 
 public Persona (){
 
+}
+
+public void imprimir() {
+    System.out.println("-------Persona-------");
+    mostrarDetalles ();
 }
 
 public void mostrarDetalles () {

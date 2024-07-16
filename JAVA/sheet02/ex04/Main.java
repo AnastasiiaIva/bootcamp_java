@@ -7,8 +7,8 @@ public class Main {
             new Empleado("Luis",30,5000),
             new Persona("Marta",40)
         };
-        for(Persona persona : personas) {
-            persona.mostrarDetalles();
+        for(Persona p : personas) {
+            p.mostrarDetalles();
         }
     }
 }
