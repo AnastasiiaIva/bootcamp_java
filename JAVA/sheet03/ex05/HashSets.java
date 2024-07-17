@@ -11,11 +11,11 @@ public class HashSets {
         numb.add(10);
         System.out.println(numb);
 
-        TreeSet<Integer> sortNumb = new TreeSet<Integer>(numb);
+/*         TreeSet<Integer> sortNumb = new TreeSet<Integer>(numb);
 
-        System.out.println(sortNumb);
+        System.out.println(sortNumb); */
 
-        for (int i : sortNumb){
+        for (int i : numb){
 ;
             System.out.println(i);
         }
