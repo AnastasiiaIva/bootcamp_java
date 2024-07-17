@@ -8,10 +8,13 @@ public class ArrayLists {
         myNumb.add(20);
         myNumb.add(30);
 
+        System.out.println(myNumb);
+
+        int sum = 0;
 
     for (int num : myNumb) {
-        System.out.println(num);
-    }
-    
+        sum += num;
+    }   
+    System.out.println("La suma es: " + sum);
 }
 }
