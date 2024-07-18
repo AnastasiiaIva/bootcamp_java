@@ -1,11 +1,12 @@
 package JAVA.sheet02.ex02;
 
+
 public class Persona {
     private String name;
     private int age;
-public Persona (String name, int age) {
+/*public Persona (String name, int age) {
     this.name = name;
-    this.age = age;
+    this.age = age;*/
 }
 
 public void mostrarDetalles () {
@@ -13,7 +14,7 @@ public void mostrarDetalles () {
     System.out.println("Edad: " + age);
 }
 
-public void setName(String newName) {
+/*public void setName(String newName) {
     this.name = newName;
     } 
 
@@ -27,7 +28,7 @@ public String getName () {
 
 public int getAge() {
     return age;
-}
+}*/
 
 
 
